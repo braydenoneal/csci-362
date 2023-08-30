@@ -1,14 +1,14 @@
 <a id="top"></a>
 
-`braydenoneal/csci-362/assignments/1`
+# Assignment 1
 
-`1`
+## 1
 
 Prints the stringified value of a tensor containing 30 numbers generated from the standard normal distribution.
 
-`2`
+## 2
 
-Source:
+### Source
 
 ```python
 import torch
@@ -19,7 +19,7 @@ print(xs.mean())
 print(xs.std())
 ```
 
-Output:
+### Output
 
 ```
 tensor([-0.7321, -0.6067, -0.5423, -1.2276,  0.5744,  0.1481,  1.4688, -1.2581,
@@ -33,9 +33,9 @@ tensor(1.3192)
 * The mean is not exactly zero because the generated values are randomized, and the mean will be expected to be close to zero, but not exactly zero.
 * The standard deviation is not exactly one because the generated values are randomized, and the standard deviation will be expected to be close to one, but not exactly one.
 
-`3`
+## 3
 
-Source:
+### Source
 
 ```python
 import torch
@@ -46,7 +46,7 @@ print(xs.mean())
 print(xs.std())
 ```
 
-Output:
+### Output
 
 ```
 tensor([105.8417, 113.7340, 106.8730, 102.0120,  71.4599, 100.2225, 104.1790,
@@ -58,11 +58,11 @@ tensor(102.9600)
 tensor(21.1079)
 ```
 
-`4`
+## 4
 
 I would expect the mean of the means to get closer to 100 as the number of samples increases.
 
-Source:
+### Source
 
 ```python
 import torch
@@ -75,17 +75,17 @@ for i in range(0, 100000):
 print(torch.tensor(means).mean())
 ```
 
-Output:
+### Output
 
 ```
 tensor(100.0121)
 ```
 
-`5`
+## 5
 
 I would expect the mean of the standard deviations to get closer to the correct value as the number of samples increases.
 
-Source:
+### Source
 
 ```python
 import torch
@@ -98,13 +98,13 @@ for i in range(0, 1000000):
 print(torch.tensor(standard_deviations).mean())
 ```
 
-Output:
+### Output
 
 ```
 tensor(24.7867)
 ```
 
-`6`
+## 6
 
 Source:
 
