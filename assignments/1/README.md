@@ -2,6 +2,8 @@
 
 # Assignment 1
 
+[github.com/braydenoneal/csci-362/edit/master/assignments/1](https://github.com/braydenoneal/csci-362/edit/master/assignments/1#top)
+
 ## 1
 
 Prints the stringified value of a tensor containing 30 numbers generated from the standard normal distribution.
