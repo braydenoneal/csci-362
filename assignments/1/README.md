@@ -2,7 +2,7 @@
 
 # Assignment 1
 
-[github.com/braydenoneal/csci-362/blob/master/assignments/1](https://github.com/braydenoneal/csci-362/blob/master/assignments/1#top)
+[github.com/braydenoneal/csci-362/tree/master/assignments/1](https://github.com/braydenoneal/csci-362/tree/master/assignments/1#top)
 
 ## 1
 
