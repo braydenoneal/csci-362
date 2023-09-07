@@ -45,4 +45,4 @@ plt.show()
 
 ## Output
 
-<img height="512" src="output.png">
+<img height="480" src="output.png">
