@@ -1,6 +1,5 @@
 import torch
 import csv
-import numpy as np
 import matplotlib.pyplot as plt
 
 with open('assign2.csv') as data_file:
@@ -28,9 +27,7 @@ least_squares = (
 intercept = least_squares[0].item()
 slope = least_squares[1].item()
 
-# plt.figure().text(0.5, 0.005, f"Slope: {slope:.4}   Intercept: {intercept:.6}", ha="center")
 plt.title(f"Slope: {slope:.4}   Intercept: {intercept:.6}")
-
 plt.scatter(x_values, y_values)
 plt.plot(x_values, x_values * slope + intercept, color="red")
 plt.show()
