@@ -35,6 +35,7 @@ for epoch in range(epochs):
     gradient = 2 * ((target_estimates - y_features) * design_matrix).sum(0, True).t() / design_matrix.size(0)
     weights -= learning_rate * gradient
 
+print(weights)
 weights = weights.squeeze(1)
 weights[1:] = weights[1:] * y_standard_deviation / x_standard_deviation
 weights[0] = weights[0] * y_standard_deviation + y_mean - weights[1:] @ x_mean
