@@ -1,5 +1,7 @@
 import csv
 import torch
+import matplotlib.pyplot as plt
+import numpy as np
 
 with open('temp_co2_data.csv') as data_file:
     data = list(csv.reader(data_file))[1:]
@@ -22,18 +24,41 @@ design_matrix = torch.tensor([[1, *line] for line in x_features])
 weights = torch.rand(3, 1) - 0.5 * torch.ones(3, 1)
 
 learning_rate = 0.5
-epochs = 30
+epochs = 3000
+
+all_weights = []
+all_losses = []
+
+loss = 0
 
 for epoch in range(epochs):
     target_estimates = design_matrix.mm(weights)
-    print(weights)
-    print(target_estimates)
 
+    prev_loss = loss
     loss = (target_estimates - y_features).pow(2).sum() / design_matrix.size(0)
     print(f'epoch: {epoch + 1}, current loss: {loss.item()}')
 
     gradient = 2 * ((target_estimates - y_features) * design_matrix).sum(0, True).t() / design_matrix.size(0)
     weights -= learning_rate * gradient
+    w_diff = torch.clone(weights).squeeze(1)
+    w_diff[1:] = w_diff[1:] * y_standard_deviation / x_standard_deviation
+    w_diff[0] = w_diff[0] * y_standard_deviation + y_mean - w_diff[1:] @ x_mean
+    all_weights.append([i * 100000 for i in [*w_diff]])
+    all_losses.append(loss * 1000 - prev_loss * 1000)
+
+all_weights = torch.tensor(all_weights)
+
+figure, axis = plt.subplots(2, 2)
+
+axis[0, 0].plot(all_weights[:, 0], all_losses)
+axis[0, 1].plot(all_weights[:, 1], all_losses)
+axis[1, 0].plot(all_weights[:, 2], all_losses)
+
+plt.show()
+
+with open("output.csv", "w") as writefile:
+    writer = csv.writer(writefile)
+    writer.writerows([[*[j.item() for j in all_weights[i]], all_losses[i].item()] for i in range(len(all_losses))])
 
 weights = weights.squeeze(1)
 weights[1:] = weights[1:] * y_standard_deviation / x_standard_deviation
