@@ -71,9 +71,10 @@ xss = torch.cat((torch.ones(len(xss),1), xss), 1)  # torch.Size([32,3])
 
 # The weights, randomly initialized. Here, w[0] will be the bias.
 w = torch.rand(3,1)-0.5*torch.ones(3,1)  # torch.Size([3,1])
+# w *= 1200
 
 alpha = 0.004  # learning rate
-epochs = 30  # the total number of times the model sees all of the data
+epochs = 30000  # the total number of times the model sees all of the data
 num_examples = len(xss)  # the number of examples
 
 for epoch in range(epochs):  # the training loop

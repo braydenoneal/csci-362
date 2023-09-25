@@ -24,7 +24,7 @@ end = 0.005
 steps = 1000
 step = (end - start) / steps
 learning_rates = torch.arange(start, end + step, step)
-epoch_sizes = torch.arange(30, 31, 1)
+epoch_sizes = torch.arange(3000, 3001, 1)
 
 loss_data = []
 
@@ -50,7 +50,8 @@ loss_data.sort(key=lambda line: line[2], reverse=True)
 for data in loss_data:
     print(f'Learning Rate: {data[0].item()} '
           f'Epoch Size: {data[1].item()} '
-          f'Loss: {data[2]}\n')
+          f'Loss: {data[2]}'
+          f' Weights: {data[3]}\n')
 
 # weights = weights.squeeze(1)
 # weights[1:] = weights[1:] * y_standard_deviation / x_standard_deviation
