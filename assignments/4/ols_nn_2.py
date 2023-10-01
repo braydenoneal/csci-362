@@ -1,20 +1,21 @@
 import csv
+import numpy as np
 import torch
-import torch.nn as nn
 
 
-class LinearRegressionModel(nn.Module):
+class LinearRegressionModel(torch.nn.Module):
     def __init__(self):
         super(LinearRegressionModel, self).__init__()
-        self.layer = nn.Linear(2, 1)
+        self.layer = torch.nn.Linear(2, 1)
 
     def forward(self, features):
         return self.layer(features)
 
 
-data = list(csv.reader(open('temp_co2_data.csv')))[1:]
-in_features = torch.tensor([[float(line[2]), float(line[3])] for line in data])
-out_features = torch.tensor([[float(line[1])] for line in data])
+with open('temp_co2_data.csv') as data_file:
+    data = list(csv.reader(data_file))[1:]
+    in_features = torch.tensor([[float(line[2]), float(line[3])] for line in data])
+    out_features = torch.tensor([[float(line[1])] for line in data])
 
 design_matrix = torch.cat((torch.ones(len(in_features), 1), in_features), 1)
 weights_linear_algebra = torch.linalg.lstsq(design_matrix, out_features, driver='gels').solution[:, 0]
@@ -25,47 +26,44 @@ out_features_mean = out_features.mean()
 in_features_standard_deviations = in_features.std(0)
 out_features_standard_deviation = out_features.std()
 
-in_features = in_features - in_features_means / in_features_standard_deviations
-out_features = out_features - out_features_mean / out_features_standard_deviation
+in_features = (in_features - in_features_means) / in_features_standard_deviations
+out_features = (out_features - out_features_mean) / out_features_standard_deviation
 
 model = LinearRegressionModel()
-criterion = nn.MSELoss()
-print('The model is:\n', model)
+criterion = torch.nn.MSELoss()
+
+print(f'The model is:\n{model}')
 
 learning_rate = 0.5
 epochs = 30
 
-""" stochasticity: float between 0 and 1 """
-stochasticity = 0.5
-batch_size = int(len(in_features) * stochasticity)
+features_size = in_features.size(0)
+
+batch_size = 32
 
 for epoch in range(epochs):
-    indices = torch.randperm(len(in_features))
+    in_features_permuted = in_features[torch.randperm(features_size)]
+    out_features_permuted = out_features[torch.randperm(features_size)]
 
     current_total_loss = 0
 
-    batch_xss = []
-    batch_yss = []
+    for batch in np.arange(0, features_size, batch_size):
+        in_features_batch = in_features_permuted[batch:batch + batch_size]
+        out_features_batch = out_features_permuted[batch:batch + batch_size]
 
-    for index in indices[:batch_size]:
-        batch_xss.append([item.item() for item in in_features[index]])
-        batch_yss.append([out_features[index].item()])
+        out_features_prediction = model.forward(in_features_batch)
 
-    batch_xss = torch.tensor(batch_xss)
-    batch_yss = torch.tensor(batch_yss)
+        loss = criterion(out_features_prediction, out_features_batch)
 
-    yss_pred = model(batch_xss)
+        current_total_loss += loss.item()
 
-    loss = criterion(yss_pred, batch_yss)
+        model.zero_grad()
+        loss.backward()
 
-    """ accum_loss * batch_size / num_examples """
-    print(f'epoch: {epoch + 1}, current loss: {loss.item()}')
+        for param in model.parameters():
+            param.data.sub_(param.grad.data * learning_rate)
 
-    model.zero_grad()
-    loss.backward()
-
-    for param in model.parameters():
-        param.data.sub_(param.grad.data * learning_rate)
+    print(f'epoch: {epoch + 1}, current loss: {current_total_loss * batch_size / len(in_features)}')
 
 parameters = list(model.parameters())
 

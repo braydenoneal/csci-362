@@ -10,10 +10,9 @@ equations.
 import csv
 import torch
 import torch.nn as nn
-from random import randint
 
 # Read in the data.
-with open('../../../temp_co2_data.csv') as csvfile:
+with open('temp_co2_data.csv') as csvfile:
   reader = csv.reader(csvfile, delimiter=',')
   next(csvfile)  # skip the first line of csvfile
   xss, yss = [], []
@@ -65,30 +64,13 @@ criterion = nn.MSELoss()
 learning_rate = 0.5
 epochs = 30
 
-""" stochasticity: float between 0 and 1 """
-stochasticity = 0.5
-batch_size = int(len(xss) * stochasticity)
-
 for epoch in range(epochs):  # train the model
-  batch_xss = []
-  batch_yss = []
-
-  randperm = torch.randperm(len(xss))
-
-  for index in randperm[:batch_size]:
-    # index = randint(0, len(xss) - 1)
-    batch_xss.append([item.item() for item in xss[index]])
-    batch_yss.append([yss[index].item()])
-
-  batch_xss = torch.tensor(batch_xss)
-  batch_yss = torch.tensor(batch_yss)
 
   # yss_pred refers to the outputs predicted by the model
-  yss_pred = model(batch_xss)
+  yss_pred = model(xss)
 
-  loss = criterion(yss_pred, batch_yss) # compute the loss
+  loss = criterion(yss_pred, yss) # compute the loss
 
-  """ accum_loss * batchsize / num_examples """
   print("epoch: {0}, current loss: {1}".format(epoch+1, loss.item()))
 
   model.zero_grad() # set the gradient to the zero vector
@@ -119,10 +101,10 @@ w[0] = params[1].data.item() * yss_stds + yss_means - w[1:] @ xss_means
 
 print("The least-squares regression plane:")
 # Print out the equation of the plane found by the neural net.
-print("  found by the neural net is: "+"y = {0:.3f} + {1:.3f}*x1 + {2:.3f}*x2"\
-    .format(w[0],w[1],w[2]))
+print("  found by the neural net is: "+"y = {0:.3f} + {1:.3f}*x1 + {2:.3f}*x2" \
+      .format(w[0],w[1],w[2]))
 
 # Print out the eq. of the plane found using closed-form linear alg. solution.
-print("  using linear algebra:       y = "+"{0:.3f} + {1:.3f}*x1 + {2:.3f}*x2"\
-    .format(lin_alg_sol[0], lin_alg_sol[1], lin_alg_sol[2]))
+print("  using linear algebra:       y = "+"{0:.3f} + {1:.3f}*x1 + {2:.3f}*x2" \
+      .format(lin_alg_sol[0], lin_alg_sol[1], lin_alg_sol[2]))
 print(f"learning rate: {learning_rate}")
