@@ -56,7 +56,7 @@ axis[1, 0].plot(all_weights[:, 2], all_losses)
 
 plt.show()
 
-with open("output.csv", "w") as writefile:
+with open("../../assignments/3/output.csv", "w") as writefile:
     writer = csv.writer(writefile)
     writer.writerows([[*[j.item() for j in all_weights[i]], all_losses[i].item()] for i in range(len(all_losses))])
 
