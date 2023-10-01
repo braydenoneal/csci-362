@@ -1,17 +1,12 @@
 import numpy as np
 import csv
 import torch
-import matplotlib
-matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
 data = list(csv.reader(open('temp_co2_data.csv')))[1:]
 in_features = torch.tensor([[float(item) for item in line[2:]] for line in data])
 out_features = torch.tensor([[float(line[1])] for line in data])
-
-design_matrix = torch.tensor([[1, *line] for line in in_features])
-weights_linear_algebra = torch.linalg.lstsq(design_matrix, out_features, driver='gels').solution[:, 0]
 
 in_features_mean = in_features.mean(0)
 out_features_mean = out_features.mean()
