@@ -48,11 +48,13 @@ batch_size = 4
 for epoch in range(epochs):
     random_indices = torch.randperm(x_features.size(0))
 
+    # split xs and ys into chunks of size batch_size
     x_feature_batches = torch.split(x_features[random_indices], batch_size)
     y_feature_batches = torch.split(y_features[random_indices], batch_size)
 
     current_total_loss = 0
 
+    # loop through x and y chunks and calculate loss
     for x_features_batch, y_features_batch in zip(x_feature_batches, y_feature_batches):
         loss = criterion(model.forward(x_features_batch), y_features_batch)
 
