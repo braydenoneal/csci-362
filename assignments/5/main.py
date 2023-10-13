@@ -1,7 +1,9 @@
 # ols.py                                                     SSimmons March 2018
+#                                                    Brayden O'Neal October 2023
 """
 Uses a neural net to find the ordinary least-squares regression model. Trains
 with batch gradient descent, and computes r^2 to gauge predictive quality.
+Implements momentum.
 """
 
 import torch
@@ -39,7 +41,7 @@ class LinearModel(nn.Module):
 model = LinearModel()
 print(model)
 
-""" Create momentum weights. """
+# Create momentum weights
 z_parameters = []
 for param in model.parameters():
     z_parameters.append(param.data.clone())
@@ -56,26 +58,27 @@ epochs = 1000
 
 # train the model
 for epoch in range(epochs):
-    for _ in range(num_examples // batch_size):
-        # randomly pick batch_size examples from data
-        indices = torch.randperm(num_examples)[:batch_size]
+    random_indices = torch.randperm(xss.size(0))
 
-        yss_mb = yss[indices]  # the targets for the mb (minibatch)
-        yhatss_mb = model(xss[indices])  # model outputs for the mb
+    x_feature_batches = torch.split(xss[random_indices], batch_size)
+    y_feature_batches = torch.split(yss[random_indices], batch_size)
 
-        loss = criterion(yhatss_mb, yss_mb)
+    current_total_loss = 0
+
+    for x_features_batch, y_features_batch in zip(x_feature_batches, y_feature_batches):
+        loss = criterion(model.forward(x_features_batch), y_features_batch)
+
+        current_total_loss += loss.item()
+
         model.zero_grad()
-        loss.backward()  # back-propagate
+        loss.backward()
 
-        """ Adjust the weights with momentum. """
+        # Adjust the weights with momentum
         for i, (z_param, param) in enumerate(zip(z_parameters, model.parameters())):
             z_parameters[i] = momentum * z_param + param.grad.data
             param.data.sub_(z_parameters[i] * learning_rate)
 
-    with torch.no_grad():
-        total_loss = criterion(model(xss), yss).item()
-
-    print_str = f'epoch: {epoch + 1}, loss: {total_loss:11.8f}'
+    print_str = f'epoch: {epoch + 1}, loss: {current_total_loss * batch_size / xss.size(0):11.8f}'
 
     if epoch < 8 or epoch > epochs - 8:
         print(print_str)
@@ -87,6 +90,7 @@ for epoch in range(epochs):
 print('total number of examples:', num_examples, end='; ')
 print('batch size:', batch_size)
 print('learning rate:', learning_rate)
+print('momentum:', momentum)
 
 # Compute 1-SSE/SST which is the proportion of the variance in the data
 # explained by the regression hyperplane.
