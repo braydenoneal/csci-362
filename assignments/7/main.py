@@ -103,5 +103,5 @@ print('batch size:', batch_size)
 print('learning rate:', learning_rate)
 print('momentum:', momentum)
 
-print("explained variation:", dulib.explained_var(model, (xss_train, yss_train)))
-print("explained variation:", dulib.explained_var(model, (xss_test, yss_test)))
+print("train explained variation:", dulib.explained_var(model, (xss_train, yss_train)))
+print("test explained variation:", dulib.explained_var(model, (xss_test, yss_test)))
