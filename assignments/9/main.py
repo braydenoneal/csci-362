@@ -29,7 +29,6 @@ for i in range(len(yss)):
 xss, xss_means = dulib.center(xss)
 xss, xss_stds = dulib.normalize(xss)
 
-
 class LinearModel(nn.Module):
     def __init__(self):
         super(LinearModel, self).__init__()
@@ -67,7 +66,6 @@ model = dulib.train(
     epochs=256,
     bs=32,
     valid_metric=pct_correct,
-    graph=1,
 )
 
 zero = torch.min(yss).item()
@@ -84,11 +82,11 @@ for i in range(len(xss)):
     if (yhat > cutoff and abs(y - eight) < th) or (yhat < cutoff and abs(y - zero) < th):
         count += 1
     else:
-        misread_images.append((8 if y > 0.5 else 0, xss[i].reshape(20, 20).detach().cpu().numpy()))
+        misread_images.append((8 if y > 0.5 else 0, (xss[i] * xss_stds + xss_means).reshape(20, 20).detach().cpu().numpy()))
 
 print("Percentage correct:", 100 * count / len(xss))
 
-if len(misread_images) > 1:
+if len(misread_images) > 0:
     plt.figure()
     f, sub = plt.subplots(1, len(misread_images), squeeze=False)
 
