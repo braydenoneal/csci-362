@@ -82,7 +82,7 @@ for i in range(len(xss)):
     if (yhat > cutoff and abs(y - eight) < th) or (yhat < cutoff and abs(y - zero) < th):
         count += 1
     else:
-        misread_images.append((8 if y > 0.5 else 0, (xss[i] * xss_stds + xss_means).reshape(20, 20).detach().cpu().numpy()))
+        misread_images.append((8 if y > cutoff else 0, (xss[i] * xss_stds + xss_means).reshape(20, 20).detach().cpu().numpy()))
 
 print("Percentage correct:", 100 * count / len(xss))
 
