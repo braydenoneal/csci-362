@@ -29,6 +29,7 @@ for i in range(len(yss)):
 xss, xss_means = dulib.center(xss)
 xss, xss_stds = dulib.normalize(xss)
 
+
 class LinearModel(nn.Module):
     def __init__(self):
         super(LinearModel, self).__init__()
@@ -49,11 +50,13 @@ def pct_correct(yhatss, yss_):
     th = 1e-3  # threshold
     cutoff = (zero + eight) / 2
     count = 0
+
     for yhats, ys in zip(yhatss, yss_):
         yhat = yhats.item()
         y = ys.item()
         if (yhat > cutoff and abs(y - eight) < th) or (yhat < cutoff and abs(y - zero) < th):
             count += 1
+
     return 100 * count / len(yss_)
 
 
@@ -82,9 +85,10 @@ for i in range(len(xss)):
     if (yhat > cutoff and abs(y - eight) < th) or (yhat < cutoff and abs(y - zero) < th):
         count += 1
     else:
-        misread_images.append((8 if y > cutoff else 0, (xss[i] * xss_stds + xss_means).reshape(20, 20).detach().cpu().numpy()))
+        image = (xss[i] * xss_stds + xss_means).reshape(20, 20).detach().cpu().numpy()
+        misread_images.append((8 if y > cutoff else 0, image))
 
-print("Percentage correct:", 100 * count / len(xss))
+print(f"Percentage correct: {100 * count / len(xss)}")
 
 if len(misread_images) > 0:
     plt.figure()
