@@ -62,7 +62,7 @@ model = dulib.train(
     crit=criterion,
     train_data=(xss, yss),
     learn_params={'lr': 0.1, 'mo': 0.7},
-    epochs=1,
+    epochs=256,
     bs=32,
     valid_metric=pct_correct,
 )
