@@ -1,3 +1,8 @@
+<a id="top"></a>
+
+# Assignment 9
+
+```python
 import torch
 import torch.cuda
 import torch.nn as nn
@@ -108,3 +113,46 @@ if len(misread_images) > 0:
         subplots[0][i].set_axis_off()
 
     plt.show()
+```
+
+## Output
+
+With the following learning parameters, the model consitenly trains to 100% accuracy.
+
+```
+training on cuda:0 (data is on cpu:0)
+epoch 1/256; loss 0.0261975
+epoch 2/256; loss 0.00672614
+epoch 3/256; loss 0.00446721
+epoch 4/256; loss 0.00386075
+epoch 5/256; loss 0.00309785
+epoch 6/256; loss 0.00264464
+epoch 7/256; loss 0.00243729
+...
+epoch 249/256; loss 0.000161498
+epoch 250/256; loss 0.000161601
+epoch 251/256; loss 0.000163041
+epoch 252/256; loss 0.000167467
+epoch 253/256; loss 0.000154791
+epoch 254/256; loss 0.000158977
+epoch 255/256; loss 0.000153163
+epoch 256/256; loss 0.000150189
+trained in 7.5 sec
+
+Percentage correct: 100.0
+
+Learning Rate: 0.1
+Momentum: 0.7
+Epochs: 256
+Batch Size: 32
+```
+
+![DULib Graph](graph.png)
+
+The code can also display the incorrectly identified images.
+
+![Multiple incorrect images](incorrect_multiple.png)
+
+For around half or more of the epochs, the model incorrectly identifies only one image, which is the following:
+
+![Incorrect image](incorrect.png)
