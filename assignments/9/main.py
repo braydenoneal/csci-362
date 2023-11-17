@@ -13,15 +13,12 @@ for i in range(0, 1000, 20):
         xss[idx] = torch.Tensor((digits[i:i + 20, j:j + 20]).flatten()).cuda()
         idx = idx + 1
 
-# extract just the zeros and eights from xss
 tempxss = torch.Tensor(1000, 400).cuda()
 tempxss[:500] = xss[:500]
 tempxss[500:] = xss[4000:4500]
 
-# overwrite the original xss with just zeros and eights
 xss = tempxss
 
-# generate yss to hold the correct classification for each example
 yss = torch.Tensor(len(xss), 1).cuda()
 for i in range(len(yss)):
     yss[i] = i // 500
@@ -40,14 +37,14 @@ class LinearModel(nn.Module):
         return torch.sigmoid(x)
 
 
-model = LinearModel().cuda()  # create an instance of the model class
-criterion = nn.MSELoss()  # create an instance of the PyTorch class nn.MSELoss
+model = LinearModel().cuda()
+criterion = nn.MSELoss()
 
 
 def pct_correct(yhatss, yss_):
     zero = torch.min(yss_).item()
     eight = torch.max(yss_).item()
-    th = 1e-3  # threshold
+    th = 1e-3
     cutoff = (zero + eight) / 2
     count = 0
 
@@ -60,20 +57,19 @@ def pct_correct(yhatss, yss_):
     return 100 * count / len(yss_)
 
 
-# train the model
 model = dulib.train(
     model,
     crit=criterion,
     train_data=(xss, yss),
     learn_params={'lr': 0.1, 'mo': 0.7},
-    epochs=256,
+    epochs=1,
     bs=32,
     valid_metric=pct_correct,
 )
 
 zero = torch.min(yss).item()
 eight = torch.max(yss).item()
-th = 1e-3  # threshold
+th = 1e-3
 cutoff = (zero + eight) / 2
 
 misread_images = []
@@ -88,15 +84,14 @@ for i in range(len(xss)):
         image = (xss[i] * xss_stds + xss_means).reshape(20, 20).detach().cpu().numpy()
         misread_images.append((8 if y > cutoff else 0, image))
 
-print(f"Percentage correct: {100 * count / len(xss)}")
+print(f'Percentage correct: {100 * count / len(xss)}')
 
 if len(misread_images) > 0:
-    plt.figure()
-    f, sub = plt.subplots(1, len(misread_images), squeeze=False)
+    figure, subplots = plt.subplots(1, len(misread_images), squeeze=False)
 
     for i in range(len(misread_images)):
-        sub[0][i].imshow(misread_images[i][1], cmap='gray')
-        sub[0][i].title.set_text(misread_images[i][0])
-        sub[0][i].set_axis_off()
+        subplots[0][i].imshow(misread_images[i][1], cmap='gray')
+        subplots[0][i].title.set_text(misread_images[i][0])
+        subplots[0][i].set_axis_off()
 
     plt.show()
