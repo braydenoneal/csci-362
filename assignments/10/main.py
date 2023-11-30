@@ -6,6 +6,15 @@ import du.lib as dulib
 from matplotlib import pyplot as plt
 import math
 
+train_amount = 0.8874703565476355
+learning_rate = 0.03524971724959869
+momentum = 0.3535090099859246
+epochs = 256
+batch_size = 187
+centered = True
+normalized = False
+hidden_layer_widths = [206, 363, 383, 318, 74, 347]
+
 digits = io.imread('digits.png')
 xss = torch.Tensor(5000, 400)
 idx = 0
@@ -18,16 +27,19 @@ yss = torch.LongTensor(len(xss))
 for i in range(len(yss)):
     yss[i] = i // 500
 
-# train_amount = 0.8
-train_amount = 0.88
-
-xss, xss_means = dulib.center(xss)
-xss, xss_stds = dulib.normalize(xss)
-
 random_split = torch.randperm(xss.size(0))
 
+xss_train_means = 0
+xss_train_stds = 1
+
 xss_train = xss[random_split][:(math.floor(xss.size(0) * train_amount))]
-xss_test = xss[random_split][(math.floor(xss.size(0) * train_amount)):]
+
+if centered:
+    xss_train, xss_train_means = dulib.center(xss_train)
+if normalized:
+    xss_train, xss_train_stds = dulib.normalize(xss_train)
+
+xss_test = xss[random_split][(math.floor(xss.size(0) * train_amount)):] * xss_train_stds + xss_train_means
 
 yss_train = yss[random_split][:(math.floor(yss.size(0) * train_amount))]
 yss_test = yss[random_split][(math.floor(yss.size(0) * train_amount)):]
@@ -36,13 +48,25 @@ yss_test = yss[random_split][(math.floor(yss.size(0) * train_amount)):]
 class LogSoftmaxModel(nn.Module):
     def __init__(self):
         super(LogSoftmaxModel, self).__init__()
-        self.layer1 = nn.Linear(400, 273)
-        self.layer2 = nn.Linear(273, 10)
+        widths = hidden_layer_widths
+        widths.insert(0, 400)
+        widths.append(10)
+
+        self.in_layer = nn.Linear(400, widths[0])
+
+        hidden_layers = []
+
+        for j in range(len(widths) - 1):
+            hidden_layers.append(nn.Linear(widths[j], widths[j + 1]))
+
+        self.hidden_layers = nn.ModuleList(hidden_layers)
+        self.out_layer = nn.Linear(widths[-1], 10)
 
     def forward(self, x):
-        x = self.layer1(x)
-        x = torch.relu(x)
-        x = self.layer2(x)
+        x = self.in_layer(x)
+        for layer in self.hidden_layers:
+            x = torch.relu(layer(x))
+        x = self.out_layer(x)
         return torch.log_softmax(x, dim=1)
 
 
@@ -60,16 +84,6 @@ def pct_correct(xss_test_, yss_test_):
     return 100 * count / len(xss_test_)
 
 
-# learning_rate = 0.0002
-# momentum = 0.9
-# epochs = 256
-# batch_size = 32
-
-learning_rate = 0.06
-momentum = 0.537
-epochs = 16384
-batch_size = 70
-
 model = dulib.train(
     model,
     crit=criterion,
@@ -79,7 +93,7 @@ model = dulib.train(
     epochs=epochs,
     bs=batch_size,
     valid_metric=pct_correct,
-    # graph=1
+    graph=1,
     print_lines=(-1,)
 )
 
@@ -100,8 +114,7 @@ for i in range(len(xss_test)):
     if prediction == actual:
         count += 1
     else:
-        # image = (xss_test[i] + xss_means).reshape(20, 20).detach().cpu().numpy()
-        image = (xss_test[i] * xss_stds + xss_means).reshape(20, 20).detach().cpu().numpy()
+        image = (xss_test[i] * xss_train_stds + xss_train_means).reshape(20, 20).detach().cpu().numpy()
         misread_images.append((prediction, actual, image))
 
 print(

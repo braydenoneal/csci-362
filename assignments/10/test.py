@@ -27,9 +27,12 @@ for i in range(1000):
     learning_rate = random.uniform(0.00001, 0.1)
     momentum = random.uniform(0.1, 0.9)
     batch_size = random.randint(16, 256)
-    hidden_layer_neurons = random.randint(50, 350)
     center = random.randint(0, 1)
     normalize = random.randint(0, 1)
+    hidden_layer_count = random.randint(1, 10)
+    widths = []
+    for j in range(hidden_layer_count):
+        widths.append(random.randint(1, 400))
 
     if center:
         xss, xss_means = dulib.center(xss_init)
@@ -50,13 +53,21 @@ for i in range(1000):
     class LogSoftmaxModel(nn.Module):
         def __init__(self):
             super(LogSoftmaxModel, self).__init__()
-            self.layer1 = nn.Linear(400, hidden_layer_neurons)
-            self.layer2 = nn.Linear(hidden_layer_neurons, 10)
+
+            self.layer_start = nn.Linear(400, widths[0])
+
+            layers = []
+            for j in range(len(widths) - 1):
+                layers.append(nn.Linear(widths[j], widths[j + 1]))
+
+            self.layers_hidden = nn.ModuleList(layers)
+            self.layer_final = nn.Linear(widths[-1], 10)
 
         def forward(self, x):
-            x = self.layer1(x)
-            x = torch.relu(x)
-            x = self.layer2(x)
+            x = self.layer_start(x)
+            for layer in self.layers_hidden:
+                x = torch.relu(layer(x))
+            x = self.layer_final(x)
             return torch.log_softmax(x, dim=1)
 
 
@@ -76,7 +87,7 @@ for i in range(1000):
 
     pct_testing = dulib.class_accuracy(model, (xss_test, yss_test), show_cm=False)
 
-    outcome = [pct_testing, train_amount, learning_rate, momentum, batch_size, hidden_layer_neurons, center, normalize]
+    outcome = [pct_testing, train_amount, learning_rate, momentum, batch_size, center, normalize, hidden_layer_count, widths]
 
     outcomes.append(outcome)
 
@@ -92,9 +103,10 @@ for i in range(1000):
         f'Learning rate: {learning_rate}\n'
         f'Momentum: {momentum}\n'
         f'Batch size: {batch_size}\n'
-        f'Hidden layer neurons: {hidden_layer_neurons}\n'
         f'Centered: {center}\n'
         f'Normalized: {normalize}\n'
+        f'Hidden layer count: {hidden_layer_count}\n'
+        f'Hidden layer widths: {widths}\n'
         f'\n'
         f'Best\n'
         f'----\n'
@@ -103,9 +115,10 @@ for i in range(1000):
         f'Learning rate: {best[2]}\n'
         f'Momentum: {best[3]}\n'
         f'Batch size: {best[4]}\n'
-        f'Hidden layer neurons: {best[5]}\n'
-        f'Centered: {best[6]}\n'
-        f'Normalized: {best[7]}\n'
+        f'Centered: {best[5]}\n'
+        f'Normalized: {best[6]}\n'
+        f'Hidden layer count: {best[7]}\n'
+        f'Hidden layer widths: {best[8]}\n'
         f'==========================================='
     )
 
@@ -172,4 +185,14 @@ Batch size: 17
 Hidden layer neurons: 160
 Centered: 0
 Normalized: 1
+
+Percentage correct: 0.9684210526315788
+Train amount: 0.8874703565476355
+Learning rate: 0.03524971724959869
+Momentum: 0.3535090099859246
+Batch size: 187
+Centered: 1
+Normalized: 0
+Hidden layer count: 6
+Hidden layer widths: [206, 363, 383, 318, 74, 347]
 """
