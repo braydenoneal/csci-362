@@ -53,7 +53,7 @@ yss_test = yss[random_split][train_split_amount:]
 class LogSoftmaxModel(nn.Module):
     def __init__(self):
         super(LogSoftmaxModel, self).__init__()
-        widths = hidden_layer_widths
+        widths = hidden_layer_widths.copy()
         widths.insert(0, 400)
         widths.append(10)
 
@@ -108,23 +108,33 @@ pct_training = dulib.class_accuracy(model, (xss_train, yss_train), show_cm=True)
 print('\nTesting Data Confusion Matrix\n')
 pct_testing = dulib.class_accuracy(model, (xss_test, yss_test), show_cm=True)
 
+weights = 401 * hidden_layer_widths[0]
+
+for i in range(len(hidden_layer_widths) - 1):
+    weights += (hidden_layer_widths[i] + 1) * hidden_layer_widths[i + 1]
+
+weights += (hidden_layer_widths[len(hidden_layer_widths) - 1] + 1) * 10
+
 print(
     f'\n'
     f'Percentage correct on training data: {100 * pct_training:.2f}\n'
     f'Percentage correct on testing data: {100 * pct_testing:.2f}\n'
     f'\n'
+    f'Train Amount: {100 * train_amount}%\n'
     f'Learning Rate: {learning_rate}\n'
     f'Momentum: {momentum}\n'
     f'Epochs: {epochs}\n'
-    f'Batch Size: {batch_size}'
+    f'Batch Size: {batch_size}\n'
+    f'Hidden Layer Widths: {hidden_layer_widths}\n'
+    f'Weights: {weights}'
 )
-
 ```
 
 ## Output
 
 Centering and normalizing the train and test data correctly made training the model to perform well on test data much
-more difficult. As such, they are disabled for now.
+more difficult. As such, they are disabled for now. The computed number of weights for one hidden layer of width 200
+is 82210.
 
 ```
 trained in 12 min 52.0 sec
@@ -168,6 +178,8 @@ Learning Rate: 1e-05
 Momentum: 0.9
 Epochs: 512
 Batch Size: 16
+Hidden Layer Widths: [200]
+Weights: 82210
 ```
 
 ![DULib Graph](graph.png)
