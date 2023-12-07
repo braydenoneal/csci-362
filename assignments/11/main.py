@@ -4,22 +4,27 @@ from skimage import io
 import du.lib as dulib
 import math
 
-train_amount = 0.8
-learning_rate = 0.00001
-momentum = 0.9
-epochs = 512
-batch_size = 16
-centered = False
-normalized = False
-hidden_layer_widths = [200]
+train_amount = 0.9
+learning_rate = 0.01
+momentum = 0.53
+epochs = 256
+batch_size = 64
+centered = True
+normalized = True
+
+# 97%
+# train_amount = 0.9
+# learning_rate = 0.1
+# momentum = 0.53
+# epochs = 256
+# batch_size = 32
 
 digits = io.imread('digits.png')
-xss = torch.Tensor(5000, 400)
+xss = torch.Tensor(5000, 20, 20)
 idx = 0
 for i in range(0, 1000, 20):
     for j in range(0, 2000, 20):
-        # TODO: Remove .flatten()
-        xss[idx] = torch.Tensor((digits[i:i + 20, j:j + 20]).flatten())
+        xss[idx] = torch.Tensor((digits[i:i + 20, j:j + 20]))
         idx = idx + 1
 
 yss = torch.LongTensor(len(xss))
@@ -27,50 +32,41 @@ for i in range(len(yss)):
     yss[i] = i // 500
 
 random_split = torch.randperm(xss.size(0))
-train_split_amount = (math.floor(xss.size(0) * train_amount))
-
-xss_train_means = 0
-xss_train_stds = 1
+train_split_amount = math.floor(xss.size(0) * train_amount)
 
 xss_train = xss[random_split][:train_split_amount]
+xss_test = xss[random_split][train_split_amount:]
 
 if centered:
     xss_train, xss_train_means = dulib.center(xss_train)
+    xss_test, _ = dulib.center(xss_test, xss_train_means)
 if normalized:
     xss_train, xss_train_stds = dulib.normalize(xss_train)
-
-xss_test = (xss[random_split][train_split_amount:] - xss_train_means) / xss_train_stds
+    xss_test, _ = dulib.normalize(xss_test, xss_train_stds)
 
 yss_train = yss[random_split][:train_split_amount]
 yss_test = yss[random_split][train_split_amount:]
 
 
-class LogSoftmaxModel(nn.Module):
+class ConvolutionalModel(nn.Module):
     def __init__(self):
-        super(LogSoftmaxModel, self).__init__()
-        widths = hidden_layer_widths
-        widths.insert(0, 400)
-        widths.append(10)
+        super(ConvolutionalModel, self).__init__()
+        self.meta_layer1 = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=2),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
+        )
+        self.fc_layer1 = nn.Linear(1600, 10)
 
-        self.in_layer = nn.Linear(400, widths[0])
-
-        hidden_layers = []
-
-        for j in range(len(widths) - 1):
-            hidden_layers.append(nn.Linear(widths[j], widths[j + 1]))
-
-        self.hidden_layers = nn.ModuleList(hidden_layers)
-        self.out_layer = nn.Linear(widths[-1], 10)
-
-    def forward(self, x):
-        x = self.in_layer(x)
-        for layer in self.hidden_layers:
-            x = torch.relu(layer(x))
-        x = self.out_layer(x)
-        return torch.log_softmax(x, dim=1)
+    def forward(self, forward_xss):
+        forward_xss = torch.unsqueeze(forward_xss, dim=1)
+        forward_xss = self.meta_layer1(forward_xss)
+        forward_xss = torch.reshape(forward_xss, (-1, 1600))
+        forward_xss = self.fc_layer1(forward_xss)
+        return torch.log_softmax(forward_xss, dim=1)
 
 
-model = LogSoftmaxModel()
+model = ConvolutionalModel()
 criterion = nn.NLLLoss()
 
 
@@ -93,7 +89,7 @@ model = dulib.train(
     epochs=epochs,
     bs=batch_size,
     valid_metric=pct_correct,
-    graph=1,
+    # graph=1,
     print_lines=(-1,)
 )
 
