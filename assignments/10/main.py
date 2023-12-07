@@ -5,12 +5,12 @@ import du.lib as dulib
 import math
 
 train_amount = 0.8
-learning_rate = 0.00001
-momentum = 0.9
-epochs = 512
-batch_size = 16
-centered = False
-normalized = False
+learning_rate = 0.01
+momentum = 0.75
+epochs = 64
+batch_size = 32
+centered = True
+normalized = True
 hidden_layer_widths = [200]
 
 digits = io.imread('digits.png')
@@ -26,19 +26,17 @@ for i in range(len(yss)):
     yss[i] = i // 500
 
 random_split = torch.randperm(xss.size(0))
-train_split_amount = (math.floor(xss.size(0) * train_amount))
-
-xss_train_means = 0
-xss_train_stds = 1
+train_split_amount = math.floor(xss.size(0) * train_amount)
 
 xss_train = xss[random_split][:train_split_amount]
+xss_test = xss[random_split][train_split_amount:]
 
 if centered:
     xss_train, xss_train_means = dulib.center(xss_train)
+    xss_test, _ = dulib.center(xss_test, xss_train_means)
 if normalized:
     xss_train, xss_train_stds = dulib.normalize(xss_train)
-
-xss_test = (xss[random_split][train_split_amount:] - xss_train_means) / xss_train_stds
+    xss_test, _ = dulib.normalize(xss_test, xss_train_stds)
 
 yss_train = yss[random_split][:train_split_amount]
 yss_test = yss[random_split][train_split_amount:]
@@ -47,7 +45,7 @@ yss_test = yss[random_split][train_split_amount:]
 class LogSoftmaxModel(nn.Module):
     def __init__(self):
         super(LogSoftmaxModel, self).__init__()
-        widths = hidden_layer_widths
+        widths = hidden_layer_widths.copy()
         widths.insert(0, 400)
         widths.append(10)
 
@@ -102,13 +100,23 @@ pct_training = dulib.class_accuracy(model, (xss_train, yss_train), show_cm=True)
 print('\nTesting Data Confusion Matrix\n')
 pct_testing = dulib.class_accuracy(model, (xss_test, yss_test), show_cm=True)
 
+weights = 401 * hidden_layer_widths[0]
+
+for i in range(len(hidden_layer_widths) - 1):
+    weights += (hidden_layer_widths[i] + 1) * hidden_layer_widths[i + 1]
+
+weights += (hidden_layer_widths[len(hidden_layer_widths) - 1] + 1) * 10
+
 print(
     f'\n'
     f'Percentage correct on training data: {100 * pct_training:.2f}\n'
     f'Percentage correct on testing data: {100 * pct_testing:.2f}\n'
     f'\n'
+    f'Train Amount: {100 * train_amount}%\n'
     f'Learning Rate: {learning_rate}\n'
     f'Momentum: {momentum}\n'
     f'Epochs: {epochs}\n'
-    f'Batch Size: {batch_size}'
+    f'Batch Size: {batch_size}\n'
+    f'Hidden Layer Widths: {hidden_layer_widths}\n'
+    f'Weights: {weights}'
 )
