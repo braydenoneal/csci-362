@@ -369,3 +369,21 @@ Weights: 82210
 ```
 
 ![DULib Graph 2](graph_2.png)
+
+## Other Parameters
+
+The following parameters train to 100% accuracy on train data and 95.9% on test data:
+
+```
+Train amount: 80.0%
+Learning rate: 0.021069506786110068
+Momentum: 0.0981809441628804
+Batch size: 38
+Centered: 0
+Normalized: 0
+Hidden layer count: 8
+Hidden layer widths: [244, 287, 145, 73, 297, 125, 166, 27]
+```
+
+These parameters were found using random search with the `test.py` file, updated to correctly implement centering
+and normalizing.

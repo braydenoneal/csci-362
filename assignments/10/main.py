@@ -4,14 +4,23 @@ from skimage import io
 import du.lib as dulib
 import math
 
+# train_amount = 0.8
+# learning_rate = 0.01
+# momentum = 0.75
+# epochs = 64
+# batch_size = 32
+# centered = True
+# normalized = True
+# hidden_layer_widths = [200]
+
 train_amount = 0.8
-learning_rate = 0.01
-momentum = 0.75
+learning_rate = 0.014418273344030551
+momentum = 0.4897415382708876
 epochs = 64
-batch_size = 32
-centered = True
-normalized = True
-hidden_layer_widths = [200]
+batch_size = 36
+centered = False
+normalized = False
+hidden_layer_widths = [178, 251, 331, 256]
 
 digits = io.imread('digits.png')
 xss = torch.Tensor(5000, 400)
