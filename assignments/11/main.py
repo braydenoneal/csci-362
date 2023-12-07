@@ -51,18 +51,41 @@ yss_test = yss[random_split][train_split_amount:]
 class ConvolutionalModel(nn.Module):
     def __init__(self):
         super(ConvolutionalModel, self).__init__()
+        """
+        L1
+        5000 in 20, 20
+        
+        16 out 20, 20
+        
+        16 out 10, 10
+        
+        L2
+        5000 * 16 in 10, 10
+        
+        16 out 10, 10
+        
+        16 out 5, 5
+        """
         self.meta_layer1 = nn.Sequential(
             nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=2),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
         )
-        self.fc_layer1 = nn.Linear(1600, 10)
+        self.meta_layer2 = nn.Sequential(
+            nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
+        )
+        self.fc_layer1 = nn.Linear(800, 200)
+        self.fc_layer2 = nn.Linear(200, 10)
 
     def forward(self, forward_xss):
         forward_xss = torch.unsqueeze(forward_xss, dim=1)
         forward_xss = self.meta_layer1(forward_xss)
-        forward_xss = torch.reshape(forward_xss, (-1, 1600))
+        forward_xss = self.meta_layer2(forward_xss)
+        forward_xss = torch.reshape(forward_xss, (-1, 800))
         forward_xss = self.fc_layer1(forward_xss)
+        forward_xss = self.fc_layer2(forward_xss)
         return torch.log_softmax(forward_xss, dim=1)
 
 
@@ -89,7 +112,7 @@ model = dulib.train(
     epochs=epochs,
     bs=batch_size,
     valid_metric=pct_correct,
-    # graph=1,
+    graph=1,
     print_lines=(-1,)
 )
 
