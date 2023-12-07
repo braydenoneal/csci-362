@@ -372,17 +372,18 @@ Weights: 82210
 
 ## Other Parameters
 
-The following parameters train to 100% accuracy on train data and 95.9% on test data:
+The following parameters train to 100% accuracy on train data and 96.2% on test data:
 
 ```
-Train amount: 80.0%
-Learning rate: 0.021069506786110068
-Momentum: 0.0981809441628804
-Batch size: 38
-Centered: 0
+Percentage correct: 0.9620000000000001
+Train amount: 0.8
+Learning rate: 0.07906919544089785
+Momentum: 0.5251951694116147
+Batch size: 260
+Centered: 1
 Normalized: 0
-Hidden layer count: 8
-Hidden layer widths: [244, 287, 145, 73, 297, 125, 166, 27]
+Hidden layer count: 5
+Hidden layer widths: [222, 361, 195, 378, 201]
 ```
 
 These parameters were found using random search with the `test.py` file, updated to correctly implement centering
