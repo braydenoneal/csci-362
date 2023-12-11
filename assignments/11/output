@@ -377,3 +377,810 @@ Learning Rate: 0.01
 Momentum: 0.53
 Epochs: 96
 Batch Size: 64
+
+
+
+
+
+
+
+
+
+
+
+
+warning (from cv_train):disjointly partitioning into 7 chunks each of size 563 followed by a chunk of length 559
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 2.07566
+epoch 2/96; loss 1.09006
+epoch 3/96; loss 0.602768
+epoch 4/96; loss 0.429194
+epoch 5/96; loss 0.330268
+epoch 6/96; loss 0.263515
+epoch 7/96; loss 0.218702
+...
+epoch 89/96; loss 0.00309239
+epoch 90/96; loss 0.00300229
+epoch 91/96; loss 0.00294602
+epoch 92/96; loss 0.00286738
+epoch 93/96; loss 0.00282098
+epoch 94/96; loss 0.00269192
+epoch 95/96; loss 0.00268217
+epoch 96/96; loss 0.00262939
+trained in 23.5 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 0.0478366
+epoch 2/96; loss 0.0250688
+epoch 3/96; loss 0.0154859
+epoch 4/96; loss 0.0152802
+epoch 5/96; loss 0.00707394
+epoch 6/96; loss 0.00548063
+epoch 7/96; loss 0.00492664
+...
+epoch 89/96; loss 0.000788675
+epoch 90/96; loss 0.000783093
+epoch 91/96; loss 0.000776232
+epoch 92/96; loss 0.000764709
+epoch 93/96; loss 0.000760628
+epoch 94/96; loss 0.000753229
+epoch 95/96; loss 0.000753706
+epoch 96/96; loss 0.000741552
+trained in 21.6 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 0.0331781
+epoch 2/96; loss 0.0042431
+epoch 3/96; loss 0.00327982
+epoch 4/96; loss 0.00130914
+epoch 5/96; loss 0.00117703
+epoch 6/96; loss 0.00109245
+epoch 7/96; loss 0.00105136
+...
+epoch 89/96; loss 0.000408766
+epoch 90/96; loss 0.000407687
+epoch 91/96; loss 0.000403169
+epoch 92/96; loss 0.000396173
+epoch 93/96; loss 0.000395053
+epoch 94/96; loss 0.00039711
+epoch 95/96; loss 0.000392353
+epoch 96/96; loss 0.000389343
+trained in 26.4 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 0.000498602
+epoch 2/96; loss 0.000477207
+epoch 3/96; loss 0.000473665
+epoch 4/96; loss 0.00046306
+epoch 5/96; loss 0.000453344
+epoch 6/96; loss 0.000453885
+epoch 7/96; loss 0.000452725
+...
+epoch 89/96; loss 0.000264241
+epoch 90/96; loss 0.000259311
+epoch 91/96; loss 0.00026114
+epoch 92/96; loss 0.000258595
+epoch 93/96; loss 0.000261149
+epoch 94/96; loss 0.000254969
+epoch 95/96; loss 0.00025436
+epoch 96/96; loss 0.00025416
+trained in 26.6 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 0.000291129
+epoch 2/96; loss 0.000282206
+epoch 3/96; loss 0.000273384
+epoch 4/96; loss 0.000273752
+epoch 5/96; loss 0.000267156
+epoch 6/96; loss 0.000272022
+epoch 7/96; loss 0.000263007
+...
+epoch 89/96; loss 0.000177095
+epoch 90/96; loss 0.000175158
+epoch 91/96; loss 0.000176709
+epoch 92/96; loss 0.000175032
+epoch 93/96; loss 0.000173299
+epoch 94/96; loss 0.000172716
+epoch 95/96; loss 0.000173123
+epoch 96/96; loss 0.000178056
+trained in 24.7 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 0.000208575
+epoch 2/96; loss 0.00020495
+epoch 3/96; loss 0.000203245
+epoch 4/96; loss 0.000201803
+epoch 5/96; loss 0.000200197
+epoch 6/96; loss 0.000204799
+epoch 7/96; loss 0.000195866
+...
+epoch 89/96; loss 0.000146628
+epoch 90/96; loss 0.000144825
+epoch 91/96; loss 0.000144861
+epoch 92/96; loss 0.00014528
+epoch 93/96; loss 0.00014418
+epoch 94/96; loss 0.000143741
+epoch 95/96; loss 0.000143336
+epoch 96/96; loss 0.000142242
+trained in 22.6 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 0.000146853
+epoch 2/96; loss 0.000145895
+epoch 3/96; loss 0.000145342
+epoch 4/96; loss 0.000144548
+epoch 5/96; loss 0.000144193
+epoch 6/96; loss 0.000144999
+epoch 7/96; loss 0.000142406
+...
+epoch 89/96; loss 0.00011271
+epoch 90/96; loss 0.000112172
+epoch 91/96; loss 0.000112505
+epoch 92/96; loss 0.000112766
+epoch 93/96; loss 0.000112274
+epoch 94/96; loss 0.00011119
+epoch 95/96; loss 0.000111111
+epoch 96/96; loss 0.000110742
+trained in 27.2 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 0.000124996
+epoch 2/96; loss 0.000124457
+epoch 3/96; loss 0.000123896
+epoch 4/96; loss 0.000123903
+epoch 5/96; loss 0.000122395
+epoch 6/96; loss 0.000122976
+epoch 7/96; loss 0.000122688
+...
+epoch 89/96; loss 9.96675e-05
+epoch 90/96; loss 9.93277e-05
+epoch 91/96; loss 9.88371e-05
+epoch 92/96; loss 9.86697e-05
+epoch 93/96; loss 9.86105e-05
+epoch 94/96; loss 9.85504e-05
+epoch 95/96; loss 9.96709e-05
+epoch 96/96; loss 9.79991e-05
+trained in 24.0 sec
+Using class_accuracy for validation.
+epoch 768; valids: mean=0.004167 std=0.009832; best=0.004167 0/10
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 9.28952e-05
+epoch 2/96; loss 9.24702e-05
+epoch 3/96; loss 9.25413e-05
+epoch 4/96; loss 9.18742e-05
+epoch 5/96; loss 9.13342e-05
+epoch 6/96; loss 9.1106e-05
+epoch 7/96; loss 9.11914e-05
+...
+epoch 89/96; loss 7.67448e-05
+epoch 90/96; loss 7.70172e-05
+epoch 91/96; loss 7.68124e-05
+epoch 92/96; loss 7.61914e-05
+epoch 93/96; loss 7.68513e-05
+epoch 94/96; loss 7.64058e-05
+epoch 95/96; loss 7.61479e-05
+epoch 96/96; loss 7.58162e-05
+trained in 22.7 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 8.71556e-05
+epoch 2/96; loss 8.56402e-05
+epoch 3/96; loss 8.57682e-05
+epoch 4/96; loss 8.46974e-05
+epoch 5/96; loss 8.50032e-05
+epoch 6/96; loss 8.37953e-05
+epoch 7/96; loss 8.3676e-05
+...
+epoch 89/96; loss 7.03897e-05
+epoch 90/96; loss 7.01953e-05
+epoch 91/96; loss 7.08984e-05
+epoch 92/96; loss 7.05984e-05
+epoch 93/96; loss 7.08359e-05
+epoch 94/96; loss 7.01921e-05
+epoch 95/96; loss 6.99428e-05
+epoch 96/96; loss 7.02345e-05
+trained in 23.5 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 7.33881e-05
+epoch 2/96; loss 7.43457e-05
+epoch 3/96; loss 7.32535e-05
+epoch 4/96; loss 7.25984e-05
+epoch 5/96; loss 7.29591e-05
+epoch 6/96; loss 7.26835e-05
+epoch 7/96; loss 7.21392e-05
+...
+epoch 89/96; loss 6.32592e-05
+epoch 90/96; loss 6.22236e-05
+epoch 91/96; loss 6.23041e-05
+epoch 92/96; loss 6.22329e-05
+epoch 93/96; loss 6.2528e-05
+epoch 94/96; loss 6.2516e-05
+epoch 95/96; loss 6.48736e-05
+epoch 96/96; loss 6.19811e-05
+trained in 29.4 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 6.31927e-05
+epoch 2/96; loss 6.28837e-05
+epoch 3/96; loss 6.29239e-05
+epoch 4/96; loss 6.29805e-05
+epoch 5/96; loss 6.24827e-05
+epoch 6/96; loss 6.23522e-05
+epoch 7/96; loss 6.20303e-05
+...
+epoch 89/96; loss 5.44372e-05
+epoch 90/96; loss 5.43267e-05
+epoch 91/96; loss 5.39858e-05
+epoch 92/96; loss 5.42502e-05
+epoch 93/96; loss 5.4117e-05
+epoch 94/96; loss 5.47065e-05
+epoch 95/96; loss 5.37169e-05
+epoch 96/96; loss 5.37533e-05
+trained in 27.0 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 5.50673e-05
+epoch 2/96; loss 5.481e-05
+epoch 3/96; loss 5.48074e-05
+epoch 4/96; loss 5.45977e-05
+epoch 5/96; loss 5.58297e-05
+epoch 6/96; loss 5.4337e-05
+epoch 7/96; loss 5.44711e-05
+...
+epoch 89/96; loss 4.82287e-05
+epoch 90/96; loss 4.76782e-05
+epoch 91/96; loss 4.78408e-05
+epoch 92/96; loss 4.7618e-05
+epoch 93/96; loss 4.82611e-05
+epoch 94/96; loss 4.79026e-05
+epoch 95/96; loss 4.75187e-05
+epoch 96/96; loss 4.76402e-05
+trained in 28.1 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 5.26181e-05
+epoch 2/96; loss 5.2247e-05
+epoch 3/96; loss 5.27202e-05
+epoch 4/96; loss 5.20984e-05
+epoch 5/96; loss 5.16976e-05
+epoch 6/96; loss 5.15695e-05
+epoch 7/96; loss 5.13646e-05
+...
+epoch 89/96; loss 4.56466e-05
+epoch 90/96; loss 4.58427e-05
+epoch 91/96; loss 4.56555e-05
+epoch 92/96; loss 4.54192e-05
+epoch 93/96; loss 4.54644e-05
+epoch 94/96; loss 4.61907e-05
+epoch 95/96; loss 4.53023e-05
+epoch 96/96; loss 4.53034e-05
+trained in 27.9 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 4.475e-05
+epoch 2/96; loss 4.4756e-05
+epoch 3/96; loss 4.49054e-05
+epoch 4/96; loss 4.43724e-05
+epoch 5/96; loss 4.44622e-05
+epoch 6/96; loss 4.47629e-05
+epoch 7/96; loss 4.46526e-05
+...
+epoch 89/96; loss 4.01359e-05
+epoch 90/96; loss 4.06449e-05
+epoch 91/96; loss 4.02363e-05
+epoch 92/96; loss 3.99137e-05
+epoch 93/96; loss 4.04953e-05
+epoch 94/96; loss 4.00533e-05
+epoch 95/96; loss 4.03899e-05
+epoch 96/96; loss 3.96824e-05
+trained in 25.7 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/96; loss 4.38651e-05
+epoch 2/96; loss 4.36246e-05
+epoch 3/96; loss 4.37261e-05
+epoch 4/96; loss 4.36867e-05
+epoch 5/96; loss 4.37881e-05
+epoch 6/96; loss 4.34366e-05
+epoch 7/96; loss 4.33249e-05
+...
+epoch 89/96; loss 3.96925e-05
+epoch 90/96; loss 3.96477e-05
+epoch 91/96; loss 3.98692e-05
+epoch 92/96; loss 3.97967e-05
+epoch 93/96; loss 3.97728e-05
+epoch 94/96; loss 3.96222e-05
+epoch 95/96; loss 3.95273e-05
+epoch 96/96; loss 3.94254e-05
+trained in 25.6 sec
+Using class_accuracy for validation.
+epoch 1536; valids: mean=0.000000 std=0.000000; best=0.000000 10/10
+best valid:  mean=0  stdev=0
+ConvolutionalModel(
+  (meta_layer1): Sequential(
+    (0): Conv2d(1, 16, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (meta_layer2): Sequential(
+    (0): Conv2d(16, 32, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (fc_layer1): Linear(in_features=800, out_features=200, bias=True)
+  (fc_layer2): Linear(in_features=200, out_features=10, bias=True)
+)
+tensor(0.)
+
+Training Data Confusion Matrix
+
+                          Actual
+         0    1    2    3    4    5    6    7    8    9 (correct)
+     --------------------------------------------------
+  0 | 10.0    0    0    0    0    0    0    0    0    0 (100.0% of 449)
+  1 |    0  9.8    0    0    0    0    0    0    0    0 (100.0% of 442)
+  2 |    0    0 10.0    0    0    0    0    0    0    0 (100.0% of 450)
+  3 |    0    0    0  9.9    0    0    0    0    0    0 (100.0% of 445)
+  4 |    0    0    0    0  9.9    0    0    0    0    0 (100.0% of 446)
+  5 |    0    0    0    0    0 10.1    0    0    0    0 (100.0% of 455)
+  6 |    0    0    0    0    0    0 10.1    0    0    0 (100.0% of 455)
+  7 |    0    0    0    0    0    0    0 10.0    0    0 (100.0% of 449)
+  8 |    0    0    0    0    0    0    0    0 10.1    0 (100.0% of 453)
+  9 |    0    0    0    0    0    0    0    0    0 10.1 (100.0% of 456)
+
+Testing Data Confusion Matrix
+
+                          Actual
+         0    1    2    3    4    5    6    7    8    9 (correct)
+     --------------------------------------------------
+  0 | 10.2    0    0    0    0    0   .2    0    0    0 (100.0% of 51)
+  1 |    0 11.6    0    0    0    0    0    0   .2    0 (100.0% of 58)
+  2 |    0    0  9.4    0   .4    0   .2    0    0    0 (94.0% of 50)
+  3 |    0    0   .2 10.8    0    0    0    0    0    0 (98.2% of 55)
+  4 |    0    0    0    0  9.6    0    0    0    0    0 (88.9% of 54)
+  5 |    0    0    0   .2    0  8.8   .4    0   .2    0 (97.8% of 45)
+  6 |    0    0    0    0   .2    0  8.2    0    0    0 (91.1% of 45)
+  7 |    0    0    0    0   .4    0    0 10.0    0    0 (98.0% of 51)
+  8 |    0    0   .4    0    0   .2    0    0  9.0   .4 (95.7% of 47)
+  9 |    0    0    0    0   .2    0    0   .2    0  8.4 (95.5% of 44)
+
+Percentage correct on training data: 100.00
+Percentage correct on testing data: 96.00
+
+Learning Rate: 0.01
+Momentum: 0.53
+Epochs: 96
+Batch Size: 64
+
+
+
+
+
+
+
+
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.1
+epoch 2/128; loss 0.235523
+epoch 3/128; loss 0.145027
+epoch 4/128; loss 0.0930595
+epoch 5/128; loss 0.0703079
+epoch 6/128; loss 0.0552874
+epoch 7/128; loss 0.0420701
+...
+epoch 121/128; loss 4.95386e-05
+epoch 122/128; loss 4.89862e-05
+epoch 123/128; loss 4.86944e-05
+epoch 124/128; loss 4.88046e-05
+epoch 125/128; loss 4.76807e-05
+epoch 126/128; loss 4.71619e-05
+epoch 127/128; loss 4.6849e-05
+epoch 128/128; loss 4.63024e-05
+trained in 36.5 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 0.0892294
+epoch 2/128; loss 0.0913011
+epoch 3/128; loss 0.0492404
+epoch 4/128; loss 0.0650809
+epoch 5/128; loss 0.0175461
+epoch 6/128; loss 0.00576743
+epoch 7/128; loss 0.00113698
+...
+epoch 121/128; loss 2.5517e-05
+epoch 122/128; loss 2.51107e-05
+epoch 123/128; loss 2.49007e-05
+epoch 124/128; loss 2.46706e-05
+epoch 125/128; loss 2.45182e-05
+epoch 126/128; loss 2.42653e-05
+epoch 127/128; loss 2.41943e-05
+epoch 128/128; loss 2.41212e-05
+trained in 35.5 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 0.00343748
+epoch 2/128; loss 0.00371655
+epoch 3/128; loss 0.000354237
+epoch 4/128; loss 0.000113645
+epoch 5/128; loss 7.94737e-05
+epoch 6/128; loss 7.06257e-05
+epoch 7/128; loss 6.50911e-05
+...
+epoch 121/128; loss 1.36245e-05
+epoch 122/128; loss 1.35402e-05
+epoch 123/128; loss 1.34795e-05
+epoch 124/128; loss 1.3462e-05
+epoch 125/128; loss 1.33488e-05
+epoch 126/128; loss 1.32532e-05
+epoch 127/128; loss 1.32196e-05
+epoch 128/128; loss 1.3101e-05
+trained in 35.6 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.60191e-05
+epoch 2/128; loss 1.50565e-05
+epoch 3/128; loss 1.45279e-05
+epoch 4/128; loss 1.41873e-05
+epoch 5/128; loss 1.38831e-05
+epoch 6/128; loss 1.3688e-05
+epoch 7/128; loss 1.35806e-05
+...
+epoch 121/128; loss 7.73929e-06
+epoch 122/128; loss 7.66867e-06
+epoch 123/128; loss 7.64155e-06
+epoch 124/128; loss 7.61865e-06
+epoch 125/128; loss 7.62305e-06
+epoch 126/128; loss 7.62958e-06
+epoch 127/128; loss 7.59432e-06
+epoch 128/128; loss 7.57178e-06
+trained in 36.0 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 8.82877e-06
+epoch 2/128; loss 8.75149e-06
+epoch 3/128; loss 8.70016e-06
+epoch 4/128; loss 8.61454e-06
+epoch 5/128; loss 8.5952e-06
+epoch 6/128; loss 8.50694e-06
+epoch 7/128; loss 8.4386e-06
+...
+epoch 121/128; loss 5.88883e-06
+epoch 122/128; loss 5.84423e-06
+epoch 123/128; loss 5.83145e-06
+epoch 124/128; loss 5.85211e-06
+epoch 125/128; loss 5.80874e-06
+epoch 126/128; loss 5.839e-06
+epoch 127/128; loss 5.77239e-06
+epoch 128/128; loss 5.83467e-06
+trained in 36.1 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 6.25211e-06
+epoch 2/128; loss 6.22908e-06
+epoch 3/128; loss 6.20173e-06
+epoch 4/128; loss 6.18016e-06
+epoch 5/128; loss 6.17669e-06
+epoch 6/128; loss 6.13657e-06
+epoch 7/128; loss 6.13124e-06
+...
+epoch 121/128; loss 4.70282e-06
+epoch 122/128; loss 4.71868e-06
+epoch 123/128; loss 4.71451e-06
+epoch 124/128; loss 4.6858e-06
+epoch 125/128; loss 4.82517e-06
+epoch 126/128; loss 4.65938e-06
+epoch 127/128; loss 4.64594e-06
+epoch 128/128; loss 4.68087e-06
+trained in 36.3 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 4.89585e-06
+epoch 2/128; loss 4.88608e-06
+epoch 3/128; loss 4.87711e-06
+epoch 4/128; loss 4.86105e-06
+epoch 5/128; loss 4.84946e-06
+epoch 6/128; loss 4.85181e-06
+epoch 7/128; loss 4.82791e-06
+...
+epoch 121/128; loss 3.94423e-06
+epoch 122/128; loss 3.9336e-06
+epoch 123/128; loss 3.94119e-06
+epoch 124/128; loss 3.92605e-06
+epoch 125/128; loss 3.91887e-06
+epoch 126/128; loss 4.0363e-06
+epoch 127/128; loss 3.9737e-06
+epoch 128/128; loss 3.91238e-06
+trained in 36.0 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 3.94413e-06
+epoch 2/128; loss 3.94085e-06
+epoch 3/128; loss 3.93261e-06
+epoch 4/128; loss 3.94559e-06
+epoch 5/128; loss 3.93291e-06
+epoch 6/128; loss 3.88996e-06
+epoch 7/128; loss 3.90036e-06
+...
+epoch 121/128; loss 3.32723e-06
+epoch 122/128; loss 3.31545e-06
+epoch 123/128; loss 3.28843e-06
+epoch 124/128; loss 3.26714e-06
+epoch 125/128; loss 3.26452e-06
+epoch 126/128; loss 3.26863e-06
+epoch 127/128; loss 3.25836e-06
+epoch 128/128; loss 3.29806e-06
+trained in 35.7 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 3.44422e-06
+epoch 2/128; loss 3.43796e-06
+epoch 3/128; loss 3.45233e-06
+epoch 4/128; loss 3.42654e-06
+epoch 5/128; loss 3.42303e-06
+epoch 6/128; loss 3.41763e-06
+epoch 7/128; loss 3.41114e-06
+...
+epoch 121/128; loss 2.95799e-06
+epoch 122/128; loss 2.97034e-06
+epoch 123/128; loss 2.95309e-06
+epoch 124/128; loss 3.03474e-06
+epoch 125/128; loss 2.96117e-06
+epoch 126/128; loss 2.93634e-06
+epoch 127/128; loss 2.94057e-06
+epoch 128/128; loss 2.93465e-06
+trained in 37.5 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 2.87157e-06
+epoch 2/128; loss 2.82418e-06
+epoch 3/128; loss 2.83584e-06
+epoch 4/128; loss 2.82216e-06
+epoch 5/128; loss 2.84445e-06
+epoch 6/128; loss 2.81511e-06
+epoch 7/128; loss 2.82091e-06
+...
+epoch 121/128; loss 2.46814e-06
+epoch 122/128; loss 2.48672e-06
+epoch 123/128; loss 2.46301e-06
+epoch 124/128; loss 2.48619e-06
+epoch 125/128; loss 2.47695e-06
+epoch 126/128; loss 2.46831e-06
+epoch 127/128; loss 2.45208e-06
+epoch 128/128; loss 2.45225e-06
+trained in 36.3 sec
+Using class_accuracy for validation.
+epoch 1280; valids: mean=0.005250 std=0.015743; best=0.005250 0/30
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 2.48208e-06
+epoch 2/128; loss 2.4585e-06
+epoch 3/128; loss 2.45291e-06
+epoch 4/128; loss 2.44973e-06
+epoch 5/128; loss 2.49112e-06
+epoch 6/128; loss 2.43794e-06
+epoch 7/128; loss 2.44377e-06
+...
+epoch 121/128; loss 2.19242e-06
+epoch 122/128; loss 2.17027e-06
+epoch 123/128; loss 2.19451e-06
+epoch 124/128; loss 2.16461e-06
+epoch 125/128; loss 2.16653e-06
+epoch 126/128; loss 2.19593e-06
+epoch 127/128; loss 2.17027e-06
+epoch 128/128; loss 2.1564e-06
+trained in 36.3 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 2.23183e-06
+epoch 2/128; loss 2.22746e-06
+epoch 3/128; loss 2.22511e-06
+epoch 4/128; loss 2.2515e-06
+epoch 5/128; loss 2.22461e-06
+epoch 6/128; loss 2.21769e-06
+epoch 7/128; loss 2.22809e-06
+...
+epoch 121/128; loss 2.00935e-06
+epoch 122/128; loss 1.99591e-06
+epoch 123/128; loss 1.99206e-06
+epoch 124/128; loss 2.02842e-06
+epoch 125/128; loss 2.00014e-06
+epoch 126/128; loss 1.99567e-06
+epoch 127/128; loss 1.98634e-06
+epoch 128/128; loss 1.98402e-06
+trained in 36.1 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.94524e-06
+epoch 2/128; loss 1.95206e-06
+epoch 3/128; loss 1.9314e-06
+epoch 4/128; loss 1.92941e-06
+epoch 5/128; loss 1.97411e-06
+epoch 6/128; loss 1.92398e-06
+epoch 7/128; loss 1.92309e-06
+...
+epoch 121/128; loss 1.73783e-06
+epoch 122/128; loss 1.73429e-06
+epoch 123/128; loss 1.72968e-06
+epoch 124/128; loss 1.7276e-06
+epoch 125/128; loss 1.72604e-06
+epoch 126/128; loss 1.75303e-06
+epoch 127/128; loss 1.73776e-06
+epoch 128/128; loss 1.7277e-06
+trained in 37.0 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.79634e-06
+epoch 2/128; loss 1.80319e-06
+epoch 3/128; loss 1.79488e-06
+epoch 4/128; loss 1.78902e-06
+epoch 5/128; loss 1.78928e-06
+epoch 6/128; loss 1.78432e-06
+epoch 7/128; loss 1.79432e-06
+...
+epoch 121/128; loss 1.61919e-06
+epoch 122/128; loss 1.6225e-06
+epoch 123/128; loss 1.61555e-06
+epoch 124/128; loss 1.62641e-06
+epoch 125/128; loss 1.6269e-06
+epoch 126/128; loss 1.61184e-06
+epoch 127/128; loss 1.61902e-06
+epoch 128/128; loss 1.61038e-06
+trained in 40.8 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.70227e-06
+epoch 2/128; loss 1.72286e-06
+epoch 3/128; loss 1.70051e-06
+epoch 4/128; loss 1.69869e-06
+epoch 5/128; loss 1.68866e-06
+epoch 6/128; loss 1.7278e-06
+epoch 7/128; loss 1.68674e-06
+...
+epoch 121/128; loss 1.55091e-06
+epoch 122/128; loss 1.54773e-06
+epoch 123/128; loss 1.54843e-06
+epoch 124/128; loss 1.54575e-06
+epoch 125/128; loss 1.55912e-06
+epoch 126/128; loss 1.56201e-06
+epoch 127/128; loss 1.55614e-06
+epoch 128/128; loss 1.56863e-06
+trained in 36.9 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.52641e-06
+epoch 2/128; loss 1.51436e-06
+epoch 3/128; loss 1.5134e-06
+epoch 4/128; loss 1.51141e-06
+epoch 5/128; loss 1.51161e-06
+epoch 6/128; loss 1.52257e-06
+epoch 7/128; loss 1.51989e-06
+...
+epoch 121/128; loss 1.39614e-06
+epoch 122/128; loss 1.40088e-06
+epoch 123/128; loss 1.3932e-06
+epoch 124/128; loss 1.39244e-06
+epoch 125/128; loss 1.39184e-06
+epoch 126/128; loss 1.41889e-06
+epoch 127/128; loss 1.40151e-06
+epoch 128/128; loss 1.39522e-06
+trained in 36.1 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.34134e-06
+epoch 2/128; loss 1.33512e-06
+epoch 3/128; loss 1.35323e-06
+epoch 4/128; loss 1.32747e-06
+epoch 5/128; loss 1.32552e-06
+epoch 6/128; loss 1.35499e-06
+epoch 7/128; loss 1.32307e-06
+...
+epoch 121/128; loss 1.22873e-06
+epoch 122/128; loss 1.23098e-06
+epoch 123/128; loss 1.22197e-06
+epoch 124/128; loss 1.23058e-06
+epoch 125/128; loss 1.22274e-06
+epoch 126/128; loss 1.21873e-06
+epoch 127/128; loss 1.21969e-06
+epoch 128/128; loss 1.22492e-06
+trained in 35.8 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.29078e-06
+epoch 2/128; loss 1.29641e-06
+epoch 3/128; loss 1.28677e-06
+epoch 4/128; loss 1.28575e-06
+epoch 5/128; loss 1.28416e-06
+epoch 6/128; loss 1.28429e-06
+epoch 7/128; loss 1.2826e-06
+...
+epoch 121/128; loss 1.18757e-06
+epoch 122/128; loss 1.1929e-06
+epoch 123/128; loss 1.193e-06
+epoch 124/128; loss 1.19204e-06
+epoch 125/128; loss 1.18595e-06
+epoch 126/128; loss 1.18568e-06
+epoch 127/128; loss 1.18979e-06
+epoch 128/128; loss 1.18843e-06
+trained in 36.1 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.24187e-06
+epoch 2/128; loss 1.23611e-06
+epoch 3/128; loss 1.23674e-06
+epoch 4/128; loss 1.23512e-06
+epoch 5/128; loss 1.23323e-06
+epoch 6/128; loss 1.25214e-06
+epoch 7/128; loss 1.24787e-06
+...
+epoch 121/128; loss 1.16254e-06
+epoch 122/128; loss 1.16293e-06
+epoch 123/128; loss 1.15823e-06
+epoch 124/128; loss 1.15525e-06
+epoch 125/128; loss 1.16403e-06
+epoch 126/128; loss 1.15283e-06
+epoch 127/128; loss 1.15201e-06
+epoch 128/128; loss 1.15148e-06
+trained in 38.0 sec
+Using class_accuracy for validation.
+training on cuda:0 (data is on cpu:0)
+epoch 1/128; loss 1.14561e-06
+epoch 2/128; loss 1.14962e-06
+epoch 3/128; loss 1.14396e-06
+epoch 4/128; loss 1.14456e-06
+epoch 5/128; loss 1.1472e-06
+epoch 6/128; loss 1.1584e-06
+epoch 7/128; loss 1.14022e-06
+...
+epoch 121/128; loss 1.07426e-06
+epoch 122/128; loss 1.06724e-06
+epoch 123/128; loss 1.06959e-06
+epoch 124/128; loss 1.06876e-06
+epoch 125/128; loss 1.06658e-06
+epoch 126/128; loss 1.06813e-06
+epoch 127/128; loss 1.06919e-06
+epoch 128/128; loss 1.0635e-06
+trained in 41.6 sec
+Using class_accuracy for validation.
+epoch 2560; valids: mean=0.000000 std=0.000000; best=0.000000 30/30
+best valid:  mean=0  stdev=0
+
+Training Data Confusion Matrix
+
+                          Actual
+         0    1    2    3    4    5    6    7    8    9 (correct)
+     --------------------------------------------------
+  0 | 10.4    0    0    0    0    0    0    0    0    0 (100.0% of 414)
+  1 |    0  9.9    0    0    0    0    0    0    0    0 (100.0% of 397)
+  2 |    0    0 10.1    0    0    0    0    0    0    0 (100.0% of 405)
+  3 |    0    0    0 10.1    0    0    0    0    0    0 (100.0% of 405)
+  4 |    0    0    0    0  9.9    0    0    0    0    0 (100.0% of 396)
+  5 |    0    0    0    0    0 10.2    0    0    0    0 (100.0% of 407)
+  6 |    0    0    0    0    0    0  9.9    0    0    0 (100.0% of 398)
+  7 |    0    0    0    0    0    0    0  9.9    0    0 (100.0% of 395)
+  8 |    0    0    0    0    0    0    0    0  9.9    0 (100.0% of 397)
+  9 |    0    0    0    0    0    0    0    0    0  9.7 (100.0% of 386)
+
+Testing Data Confusion Matrix
+
+                          Actual
+         0    1    2    3    4    5    6    7    8    9 (correct)
+     --------------------------------------------------
+  0 |  8.5    0    0    0    0    0   .2    0    0    0 (98.8% of 86)
+  1 |    0 10.3    0    0    0    0    0   .1    0   .1 (100.0% of 103)
+  2 |    0    0  9.0    0   .1    0    0    0    0    0 (94.7% of 95)
+  3 |    0    0   .1  9.1    0   .2    0    0    0    0 (95.8% of 95)
+  4 |    0    0   .1    0 10.2    0    0    0    0    0 (98.1% of 104)
+  5 |    0    0    0   .2    0  8.7    0    0    0   .1 (93.5% of 93)
+  6 |   .1    0    0    0   .1   .2 10.0    0    0    0 (98.0% of 102)
+  7 |    0    0   .2   .1    0    0    0 10.2    0   .3 (97.1% of 105)
+  8 |    0    0   .1    0    0   .2    0    0 10.2    0 (99.0% of 103)
+  9 |    0    0    0   .1    0    0    0   .2   .1 10.9 (95.6% of 114)
+
+Percentage correct on training data: 100.00
+Percentage correct on testing data: 97.10
+
+Valids: 0.0
+Learning Rate: 0.01
+Momentum: 0.9
+Epochs: 128
+Batch Size: 32
