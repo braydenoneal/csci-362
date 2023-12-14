@@ -12,24 +12,6 @@ batch_size = 32
 centered = True
 normalized = True
 
-# 97.10%
-# train_amount = 0.8
-# learning_rate = 0.01
-# momentum = 0.9
-# epochs = 128
-# batch_size = 32
-# centered = True
-# normalized = True
-
-# 98.10%
-# train_amount = 0.8
-# learning_rate = 0.1
-# momentum = 0.53
-# epochs = 96
-# batch_size = 32
-# centered = True
-# normalized = True
-
 digits = io.imread('digits.png')
 xss = torch.Tensor(5000, 20, 20)
 xss_index = 0
