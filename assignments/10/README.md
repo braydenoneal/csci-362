@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 10
+# Assignment 10: Hidden Layers
 
 ```python
 import torch

@@ -1,8 +1,4 @@
-<a id="top"></a>
-
-# Assignment 1
-
-[github.com/braydenoneal/csci-362/tree/master/assignments/1](https://github.com/braydenoneal/csci-362/tree/master/assignments/1#top)
+# Assignment 1: Tensor Basics
 
 ## 1
 

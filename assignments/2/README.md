@@ -1,8 +1,4 @@
-<a id="top"></a>
-
-# Assignment 2
-
-[github.com/braydenoneal/csci-362/tree/master/assignments/2](https://github.com/braydenoneal/csci-362/tree/master/assignments/2#top)
+# Assignment 2: Linear Algebra
 
 ## Source
 
@@ -45,4 +41,4 @@ plt.show()
 
 ## Output
 
-<img height="480" src="output.png">
+![output.png](output.png)

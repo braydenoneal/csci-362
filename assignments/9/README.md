@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 9
+# Assignment 9: Handwritten Digits Dataset
 
 ```python
 import torch

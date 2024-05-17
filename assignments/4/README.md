@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 4
+# Assignment 4: PyTorch Module
 
 ## Source
 

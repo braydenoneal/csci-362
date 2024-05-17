@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 3
+# Assignment 3: Linear Neural Network
 
 ## Source
 

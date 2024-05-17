@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 7
+# Assignment 7: Explained Variation
 
 ## Source
 

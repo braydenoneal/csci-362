@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 6
+# Assignment 6: Nonlinear Neural Network
 
 ## Source
 

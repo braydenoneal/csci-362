@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 11
+# Assignment 11: Convolutional Neural Network
 
 ```python
 import torch

@@ -1,6 +1,4 @@
-<a id="top"></a>
-
-# Assignment 8
+# Assignment 8: Graphing with DULib
 
 ```python
 # ols.py                                                     SSimmons March 2018
